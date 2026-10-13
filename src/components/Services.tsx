@@ -26,7 +26,7 @@ export default function Services() {
     <section id="services" className="bg-surface-muted py-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-dark">
             What We Do
           </p>
           <h2 className="mt-3 font-serif text-4xl font-semibold text-ink">
@@ -40,7 +40,7 @@ export default function Services() {
               key={service.title}
               className="rounded-2xl border border-line bg-surface p-8"
             >
-              <span className="font-serif text-sm text-brand">
+              <span className="font-serif text-sm text-brand-dark">
                 0{i + 1}
               </span>
               <h3 className="mt-3 font-serif text-xl font-semibold text-ink">

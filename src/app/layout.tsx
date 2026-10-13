@@ -14,9 +14,9 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Lesk Homes | Custom Home Builders",
+  title: "Lesk Custom Homes | Inspired Luxury. Built with Integrity.",
   description:
-    "Lesk Homes designs and builds custom homes built around how you actually live — from first sketch to final walkthrough.",
+    "Lesk Custom Homes designs and builds custom homes built around how you actually live — from first sketch to final walkthrough.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -1,5 +1,7 @@
 import Image from "next/image";
-import { ph } from "@/lib/placeholder";
+import crewPhoto from "@/assets/about-crew.jpg";
+import framingPhoto from "@/assets/about-framing.jpg";
+import showerPhoto from "@/assets/about-shower.jpg";
 
 const STATS = [
   { value: "20+", label: "Years building custom homes" },
@@ -14,32 +16,38 @@ export default function About() {
         <div className="grid grid-cols-2 gap-4">
           <div className="relative col-span-2 aspect-[4/3] overflow-hidden rounded-2xl">
             <Image
-              src={ph(1200, 900, "Job Site — Framing", 1)}
-              alt="Placeholder — crew framing a home on site"
+              src={framingPhoto}
+              alt="Second-story addition framed and partly sheathed above an existing home"
               fill
+              placeholder="blur"
+              sizes="(min-width: 768px) 50vw, 100vw"
               className="object-cover"
             />
           </div>
           <div className="relative aspect-square overflow-hidden rounded-2xl">
             <Image
-              src={ph(600, 600, "Founder Portrait", 2)}
-              alt="Placeholder — portrait of the founder"
+              src={crewPhoto}
+              alt="Crew member on a ladder sheathing a second-story addition"
               fill
+              placeholder="blur"
+              sizes="(min-width: 768px) 25vw, 50vw"
               className="object-cover"
             />
           </div>
           <div className="relative aspect-square overflow-hidden rounded-2xl">
             <Image
-              src={ph(600, 600, "Interior Detail", 3)}
-              alt="Placeholder — interior finish detail"
+              src={showerPhoto}
+              alt="Glass-enclosed walk-in shower finished in large-format marble-look tile"
               fill
+              placeholder="blur"
+              sizes="(min-width: 768px) 25vw, 50vw"
               className="object-cover"
             />
           </div>
         </div>
 
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-dark">
             About Lesk Homes
           </p>
           <h2 className="mt-3 font-serif text-4xl font-semibold text-ink">

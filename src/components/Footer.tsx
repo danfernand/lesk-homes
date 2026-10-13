@@ -1,3 +1,6 @@
+import Image from "next/image";
+import logo from "@/assets/logo.png";
+
 const NAV_LINKS = [
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
@@ -11,9 +14,17 @@ export default function Footer() {
   return (
     <footer className="border-t border-line">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="font-serif text-lg font-semibold text-ink">Lesk Homes</p>
-          <p className="mt-1 text-sm text-ink-soft">
+        <div className="shrink-0">
+          <Image
+            src={logo}
+            alt="Lesk Custom Homes"
+            sizes="180px"
+            className="h-12 w-auto"
+          />
+          <p className="mt-4 text-xs font-medium uppercase tracking-[0.2em] text-ink">
+            Inspired Luxury. Built with Integrity.
+          </p>
+          <p className="mt-2 text-sm text-ink-soft">
             [Placeholder] Custom home builder — city, state.
           </p>
         </div>
@@ -23,7 +34,7 @@ export default function Footer() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-ink-soft hover:text-brand"
+              className="text-sm text-ink-soft hover:text-brand-dark"
             >
               {link.label}
             </a>
@@ -31,7 +42,7 @@ export default function Footer() {
         </nav>
 
         <p className="text-xs text-ink-soft">
-          © {new Date().getFullYear()} Lesk Homes. All rights reserved.
+          © {new Date().getFullYear()} Lesk Custom Homes. All rights reserved.
         </p>
       </div>
     </footer>

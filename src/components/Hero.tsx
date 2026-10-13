@@ -1,23 +1,25 @@
 import Image from "next/image";
-import { ph } from "@/lib/placeholder";
+import heroPhoto from "@/assets/hero.jpg";
 
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src={ph(2000, 1400, "Hero Photo — Finished Home Exterior", 0)}
-          alt="Placeholder — exterior photo of a finished custom home"
+          src={heroPhoto}
+          alt="Single-story dark brick home with a covered entry and warm exterior lighting at dusk"
           fill
-          priority
+          preload
+          placeholder="blur"
+          sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-ink/60" />
+        <div className="absolute inset-0 bg-ink/65 md:bg-transparent md:bg-linear-to-r md:from-ink/85 md:via-ink/60 md:to-ink/25" />
       </div>
 
       <div className="relative mx-auto flex min-h-[85vh] max-w-6xl flex-col justify-center px-6 py-32">
         <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
-          Custom Home Builders
+          Inspired Luxury. Built with Integrity.
         </p>
         <h1 className="max-w-3xl font-serif text-5xl font-semibold leading-tight text-white sm:text-6xl">
           Homes built around how you actually live.
@@ -29,7 +31,7 @@ export default function Hero() {
         <div className="mt-10 flex flex-wrap gap-4">
           <a
             href="#contact"
-            className="rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
+            className="rounded-full bg-brand-light px-7 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-white"
           >
             Start Your Project
           </a>

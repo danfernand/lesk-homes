@@ -2,11 +2,12 @@
 
 :root {
   --background: #faf7f2;
-  --foreground: #211d18;
-  --brand: #a3572f;
-  --brand-dark: #7a3f21;
-  --ink: #211d18;
-  --ink-soft: #55504a;
+  --foreground: #062a4b;
+  --brand: #a8864c;
+  --brand-dark: #7f612b;
+  --brand-light: #c9a96e;
+  --ink: #062a4b;
+  --ink-soft: #4a5868;
   --line: #e4ddd1;
   --surface: #ffffff;
   --surface-muted: #f1ece2;
@@ -17,6 +18,7 @@
   --color-foreground: var(--foreground);
   --color-brand: var(--brand);
   --color-brand-dark: var(--brand-dark);
+  --color-brand-light: var(--brand-light);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-line: var(--line);

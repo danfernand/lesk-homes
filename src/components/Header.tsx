@@ -1,3 +1,6 @@
+import Image from "next/image";
+import logo from "@/assets/logo.png";
+
 const NAV_LINKS = [
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
@@ -10,9 +13,15 @@ const NAV_LINKS = [
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-background/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-serif text-xl font-semibold tracking-tight text-ink">
-          Lesk Homes
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+        <a href="#top">
+          <Image
+            src={logo}
+            alt="Lesk Custom Homes"
+            sizes="165px"
+            loading="eager"
+            className="h-11 w-auto"
+          />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -20,7 +29,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-ink-soft transition-colors hover:text-brand"
+              className="text-sm font-medium text-ink-soft transition-colors hover:text-brand-dark"
             >
               {link.label}
             </a>
@@ -30,13 +39,13 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <a
             href="tel:+15555550123"
-            className="hidden text-sm font-medium text-ink-soft hover:text-brand sm:block"
+            className="hidden text-sm font-medium text-ink-soft hover:text-brand-dark sm:block"
           >
             (555) 555-0123
           </a>
           <a
             href="#contact"
-            className="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
+            className="rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
           >
             Get a Quote
           </a>
