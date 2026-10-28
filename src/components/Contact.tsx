@@ -1,15 +1,16 @@
 "use client";
 
-import { useForm, ValidationError } from "@formspree/react";
+import { useActionState } from "react";
+import { sendInquiry, type InquiryState } from "@/app/actions";
 
-const FORM_ID = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID;
+const INITIAL_STATE: InquiryState = { status: "idle" };
 
 export default function Contact() {
-  // useForm needs a non-empty key even when unconfigured, so prerendering
-  // doesn't crash; submission will simply fail until a real ID is set.
-  const [state, handleSubmit] = useForm(FORM_ID || "unconfigured-form-id");
+  const [state, formAction, pending] = useActionState(sendInquiry, INITIAL_STATE);
+  // After a failed send, refill the form so nothing typed is lost.
+  const values = state.status === "error" ? state.fields : undefined;
 
-  if (state.succeeded) {
+  if (state.status === "sent") {
     return (
       <section id="contact" className="mx-auto max-w-6xl px-6 py-24">
         <div className="rounded-3xl bg-ink px-8 py-20 text-center">
@@ -43,19 +44,15 @@ export default function Contact() {
           <div className="mt-10 space-y-3 text-sm text-white/80">
             <p>
               <span className="text-white/50">Phone: </span>
-              <a href="tel:+15555550123" className="hover:text-brand-light">
-                (555) 555-0123
+              <a href="tel:+12146036879" className="hover:text-brand-light">
+                (214) 603-6879
               </a>
             </p>
             <p>
               <span className="text-white/50">Email: </span>
-              <a href="mailto:hello@leskhomes.com" className="hover:text-brand-light">
-                hello@leskhomes.com
+              <a href="mailto:office@leskhomes.com" className="hover:text-brand-light">
+                office@leskhomes.com
               </a>
-            </p>
-            <p>
-              <span className="text-white/50">Service Area: </span>
-              [Placeholder — city / region]
             </p>
           </div>
         </div>
@@ -63,9 +60,12 @@ export default function Contact() {
         <form
           className="space-y-4"
           aria-label="Project inquiry form"
-          onSubmit={handleSubmit}
+          action={formAction}
         >
-          <input type="hidden" name="_subject" value="New inquiry — Lesk Homes site" />
+          <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+            <label htmlFor="company">Company</label>
+            <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+          </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
@@ -77,6 +77,8 @@ export default function Contact() {
                 name="name"
                 type="text"
                 required
+                maxLength={200}
+                defaultValue={values?.name}
                 className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-2.5 text-white placeholder-white/40 outline-none focus:border-brand-light"
                 placeholder="Jordan Smith"
               />
@@ -90,10 +92,11 @@ export default function Contact() {
                 name="email"
                 type="email"
                 required
+                maxLength={320}
+                defaultValue={values?.email}
                 className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-2.5 text-white placeholder-white/40 outline-none focus:border-brand-light"
                 placeholder="jordan@email.com"
               />
-              <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1.5 text-xs text-red-400" />
             </div>
           </div>
 
@@ -104,7 +107,7 @@ export default function Contact() {
             <select
               id="budget"
               name="budget"
-              defaultValue=""
+              defaultValue={values?.budget ?? ""}
               className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-2.5 text-white outline-none focus:border-brand-light"
             >
               <option value="" disabled className="text-ink">
@@ -126,24 +129,24 @@ export default function Contact() {
               name="message"
               rows={4}
               required
+              maxLength={5000}
+              defaultValue={values?.message}
               className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-2.5 text-white placeholder-white/40 outline-none focus:border-brand-light"
               placeholder="Lot location, timeline, must-haves..."
             />
-            <ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1.5 text-xs text-red-400" />
           </div>
 
           <button
             type="submit"
-            disabled={state.submitting}
+            disabled={pending}
             className="w-full rounded-full bg-brand-light px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-white disabled:opacity-60"
           >
-            {state.submitting ? "Sending…" : "Send Inquiry"}
+            {pending ? "Sending…" : "Send Inquiry"}
           </button>
 
-          {!FORM_ID && (
-            <p className="text-xs text-amber-400">
-              [Dev] Set NEXT_PUBLIC_FORMSPREE_FORM_ID in .env.local to connect
-              this form to Formspree — see README.
+          {state.status === "error" && (
+            <p role="alert" className="text-sm text-red-300">
+              {state.error}
             </p>
           )}
         </form>

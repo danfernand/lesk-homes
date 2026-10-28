@@ -15,7 +15,7 @@ content before launch.
 
 ```bash
 yarn install
-cp .env.local.example .env.local  # then fill in NEXT_PUBLIC_FORMSPREE_FORM_ID
+vercel link && vercel env pull  # Resend key + domain; then add CONTACT_TO_EMAIL
 yarn dev
 ```
 
@@ -23,7 +23,11 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 ## Structure
 
-- `src/app/page.tsx` — assembles the single page from section components
+- `src/app/page.tsx` — assembles the home page from section components
+- `src/app/work/[slug]/page.tsx` — one gallery page per project
+- `src/data/projects.ts` — project names, descriptions and photos, shared by
+  the home page grid and the project pages
+- `src/app/actions.ts` — Server Action that emails contact form inquiries
 - `src/components/` — one component per section (Header, Hero, About,
   Services, Gallery, Process, Testimonials, Contact, Footer)
 - `src/assets/` — logo and web-sized photos, statically imported by the
@@ -31,19 +35,20 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 ## Contact form
 
-The Contact section submits through [Formspree](https://formspree.io) via
-`@formspree/react`, the same pattern used on k6development-new. No custom
-API route or backend is needed.
+The Contact section posts to a Server Action (`src/app/actions.ts`) that
+emails the inquiry through [Resend](https://resend.com), installed on the
+Vercel project from the Marketplace. Emails come from
+`inquiries@leskhomes.com`, with reply-to set to the visitor, so replying
+goes straight to them. A hidden honeypot field drops most bot submissions.
 
-1. Create a new form in the Formspree account, pointed at whatever inbox
-   should receive Lesk Homes leads.
-2. Copy its form ID and set `NEXT_PUBLIC_FORMSPREE_FORM_ID` locally (in
-   `.env.local`) and in the Vercel project's environment variables.
+Environment variables (see `.env.local.example`):
 
-Until that's set, the form renders with a dev-only warning instead of
-submitting.
+- `RESEND_API_KEY`, `RESEND_EMAIL_DOMAIN` — added by the Resend integration
+- `CONTACT_TO_EMAIL` — inbox that receives inquiries; comma-separate several
+
+The sending domain must be verified in Resend (DNS records live at Hover).
 
 ## Deployment
 
-Deploys to Vercel. Requires `NEXT_PUBLIC_FORMSPREE_FORM_ID` to be set as a
-Vercel project environment variable for the contact form to work.
+Deploys to Vercel. `CONTACT_TO_EMAIL` has to be set on the Vercel project
+for the contact form to send.
