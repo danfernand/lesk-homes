@@ -2,22 +2,17 @@ const SERVICES = [
   {
     title: "Custom Home Design",
     description:
-      "[Placeholder] From lot evaluation to architectural plans, we shape a design around your budget, site, and lifestyle.",
+      "Our in-house design team shapes the home around your site, lifestyle and budget, from early concepts through key selections.",
   },
   {
-    title: "New Home Construction",
+    title: "Ground-Up Construction",
     description:
-      "[Placeholder] Full-service ground-up building with a single point of contact and a schedule you can actually trust.",
+      "A coordinated build from site planning and permitting through trades, finishes, inspections and handoff.",
   },
   {
-    title: "Renovations & Additions",
+    title: "High-End Renovations",
     description:
-      "[Placeholder] Room additions, second stories, and whole-home renovations handled with the same care as new builds.",
-  },
-  {
-    title: "Design-Build Consulting",
-    description:
-      "[Placeholder] Early-stage budgeting and feasibility guidance before you commit to plans or a piece of land.",
+      "Thoughtful, full-scope transformations for existing homes, with the same design attention and project leadership as a custom build.",
   },
 ];
 
@@ -30,11 +25,11 @@ export default function Services() {
             What We Do
           </p>
           <h2 className="mt-3 font-serif text-4xl font-semibold text-ink">
-            Services built for the whole journey.
+            Luxury custom homes, designed and built in-house.
           </h2>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
           {SERVICES.map((service, i) => (
             <div
               key={service.title}

@@ -1,28 +1,45 @@
+import Image from "next/image";
+import dhlcLogo from "@/assets/partners/dhlc.png";
+import flagstarLogo from "@/assets/partners/flagstar.png";
+import northDallasBankLogo from "@/assets/partners/north-dallas-bank.png";
+import prosperityLogo from "@/assets/partners/prosperity-bank.svg";
+import sofiLogo from "@/assets/partners/sofi.svg";
+
 const STEPS = [
   {
     step: "01",
-    title: "Discovery Call",
+    title: "Discovery + Site Strategy",
     description:
-      "[Placeholder] We talk through your goals, site, budget range, and timeline to see if we're a fit.",
+      "Align on goals, lot and budget. A luxury real-estate consultant brings market and site perspective.",
   },
   {
     step: "02",
-    title: "Design & Budget",
+    title: "Design + Budget",
     description:
-      "[Placeholder] Our team develops plans and a real budget together, so there are no surprises later.",
+      "The in-house design team develops the concept and selections alongside project scope and cost.",
   },
   {
     step: "03",
-    title: "Pre-Construction",
+    title: "Preconstruction",
     description:
-      "[Placeholder] Permits, selections, and a locked schedule get finalized before a single shovel hits the ground.",
+      "Finalize plans, pricing, permits, trades and schedule before work begins.",
   },
   {
     step: "04",
-    title: "Build & Handoff",
+    title: "Build + Handoff",
     description:
-      "[Placeholder] Weekly updates and a dedicated site lead through framing, finishes, and your final walkthrough.",
+      "Maintain clear project updates and quality control through inspections and final walkthrough.",
   },
+];
+
+// Logos pulled from each company's website; swap in the official artwork
+// from Matt's team when it arrives.
+const PARTNERS = [
+  { name: "Prosperity Bank", href: "https://www.prosperitybankusa.com", logo: prosperityLogo },
+  { name: "North Dallas Bank & Trust", href: "https://ndbt.com", logo: northDallasBankLogo },
+  { name: "SoFi", href: "https://www.sofi.com", logo: sofiLogo },
+  { name: "Flagstar", href: "https://www.flagstar.com", logo: flagstarLogo },
+  { name: "DHLC Investments, Inc.", href: "https://www.dhlc.com", logo: dhlcLogo },
 ];
 
 export default function Process() {
@@ -34,8 +51,13 @@ export default function Process() {
             How It Works
           </p>
           <h2 className="mt-3 font-serif text-4xl font-semibold text-white">
-            A clear process, start to finish.
+            The full team behind a well-managed build.
           </h2>
+          <p className="mt-6 text-white/70">
+            An in-house design team, a luxury real-estate consultant, and
+            approved builder and financing relationships — all working within
+            one accountable construction process.
+          </p>
         </div>
 
         <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -50,6 +72,32 @@ export default function Process() {
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-20 border-t border-white/20 pt-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-light">
+            Approved Builder &amp; Financing Relationships
+          </p>
+          <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+            {PARTNERS.map((partner) => (
+              <li key={partner.name}>
+                <a
+                  href={partner.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${partner.name} (opens in a new tab)`}
+                  className="flex h-24 items-center justify-center rounded-xl bg-white px-6 transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/30"
+                >
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    sizes="180px"
+                    className="max-h-10 w-auto max-w-full object-contain"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

@@ -1,13 +1,7 @@
 import Image from "next/image";
-import crewPhoto from "@/assets/about-crew.jpg";
-import framingPhoto from "@/assets/about-framing.jpg";
-import showerPhoto from "@/assets/about-shower.jpg";
-
-const STATS = [
-  { value: "20+", label: "Years building custom homes" },
-  { value: "150+", label: "Homes completed" },
-  { value: "4.9/5", label: "Average client rating" },
-];
+import darvanyFramingPhoto from "@/assets/about-darvany-framing.jpg";
+import westfieldFramingPhoto from "@/assets/about-westfield-framing.jpg";
+import westfieldInteriorPhoto from "@/assets/about-westfield-interior.jpg";
 
 export default function About() {
   return (
@@ -16,8 +10,8 @@ export default function About() {
         <div className="grid grid-cols-2 gap-4">
           <div className="relative col-span-2 aspect-[4/3] overflow-hidden rounded-2xl">
             <Image
-              src={framingPhoto}
-              alt="Second-story addition framed and partly sheathed above an existing home"
+              src={darvanyFramingPhoto}
+              alt="Crew framing and sheathing the walls of Darvany, a ground-up custom home"
               fill
               placeholder="blur"
               sizes="(min-width: 768px) 50vw, 100vw"
@@ -26,8 +20,8 @@ export default function About() {
           </div>
           <div className="relative aspect-square overflow-hidden rounded-2xl">
             <Image
-              src={crewPhoto}
-              alt="Crew member on a ladder sheathing a second-story addition"
+              src={westfieldFramingPhoto}
+              alt="Roof trusses and sheathed walls going up on the Westfield Lane new build"
               fill
               placeholder="blur"
               sizes="(min-width: 768px) 25vw, 50vw"
@@ -36,8 +30,8 @@ export default function About() {
           </div>
           <div className="relative aspect-square overflow-hidden rounded-2xl">
             <Image
-              src={showerPhoto}
-              alt="Glass-enclosed walk-in shower finished in large-format marble-look tile"
+              src={westfieldInteriorPhoto}
+              alt="Finished open living area at Westfield Lane with wood floors and a sliding glass door"
               fill
               placeholder="blur"
               sizes="(min-width: 768px) 25vw, 50vw"
@@ -48,33 +42,29 @@ export default function About() {
 
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-dark">
-            About Lesk Homes
+            About Lesk Custom Homes
           </p>
           <h2 className="mt-3 font-serif text-4xl font-semibold text-ink">
-            A local builder, run like a craft.
+            A Dallas builder shaped by service and experience.
           </h2>
           <p className="mt-6 text-ink-soft">
-            [Placeholder copy] Lesk Homes was founded on the idea that a custom
-            build should feel personal from day one. Swap in the real founder
-            story here — where the company started, what it believes about
-            building, and why clients choose to build with us.
+            Matt Kowalewski is a Dallas builder, developer and U.S. Army
+            veteran. He served in Kuwait and Baghdad, and brings a steady,
+            people-first approach to leadership on every project.
           </p>
           <p className="mt-4 text-ink-soft">
-            [Placeholder copy] A second paragraph on process, licensing,
-            service area, or team size can go here once the client provides
-            final copy.
+            After military service, Matt worked with large construction
+            companies, learning how complex residential projects are planned
+            and delivered. He went on to build his own construction and
+            development business, bringing that experience directly to clients.
           </p>
-
-          <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-line pt-8">
-            {STATS.map((stat) => (
-              <div key={stat.label}>
-                <dt className="font-serif text-3xl font-semibold text-ink">
-                  {stat.value}
-                </dt>
-                <dd className="mt-1 text-sm text-ink-soft">{stat.label}</dd>
-              </div>
-            ))}
-          </dl>
+          <p className="mt-4 text-ink-soft">
+            Today, Lesk Custom Homes focuses on luxury ground-up homes and
+            select high-end renovations across Dallas and North Texas. Matt
+            stays involved from early planning through construction, with a
+            team focused on thoughtful design, clear communication and
+            craftsmanship.
+          </p>
         </div>
       </div>
     </section>

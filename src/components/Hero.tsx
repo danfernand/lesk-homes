@@ -1,19 +1,23 @@
-import Image from "next/image";
-import heroPhoto from "@/assets/hero.jpg";
+import darvanyPhoto from "@/assets/projects/darvany/01.jpg";
+import westfieldLanePhoto from "@/assets/projects/westfield-lane/01.jpg";
+import HeroSlideshow from "@/components/HeroSlideshow";
+
+const SLIDES = [
+  {
+    src: darvanyPhoto,
+    alt: "Darvany, a ground-up custom home in Dallas, at dusk with white board-and-batten siding and landscape lighting",
+  },
+  {
+    src: westfieldLanePhoto,
+    alt: "Westfield Lane, a finished custom home with white lap siding, a stone wainscot, and a covered front porch",
+  },
+];
 
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <Image
-          src={heroPhoto}
-          alt="Single-story dark brick home with a covered entry and warm exterior lighting at dusk"
-          fill
-          preload
-          placeholder="blur"
-          sizes="100vw"
-          className="object-cover"
-        />
+        <HeroSlideshow slides={SLIDES} />
         <div className="absolute inset-0 bg-ink/65 md:bg-transparent md:bg-linear-to-r md:from-ink/85 md:via-ink/60 md:to-ink/25" />
       </div>
 
@@ -25,8 +29,8 @@ export default function Hero() {
           Homes built around how you actually live.
         </h1>
         <p className="mt-6 max-w-xl text-lg text-white/85">
-          Lesk Homes partners with families from first sketch to final walkthrough,
-          delivering custom-built homes with honest craftsmanship and no surprises.
+          Lesk Custom Homes designs and builds luxury custom homes across Dallas
+          and North Texas, from first sketch to final walkthrough.
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
           <a

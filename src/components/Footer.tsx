@@ -1,13 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 import logo from "@/assets/logo.png";
 
 const NAV_LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#work", label: "Our Work" },
-  { href: "#process", label: "Process" },
-  { href: "#testimonials", label: "Testimonials" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/#work", label: "Our Work" },
+  { href: "/#process", label: "Process" },
+  { href: "/#testimonials", label: "Testimonials" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Footer() {
@@ -25,19 +26,19 @@ export default function Footer() {
             Inspired Luxury. Built with Integrity.
           </p>
           <p className="mt-2 text-sm text-ink-soft">
-            [Placeholder] Custom home builder — city, state.
+            Luxury custom home builder — Dallas, Texas.
           </p>
         </div>
 
         <nav className="flex flex-wrap gap-x-6 gap-y-2">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm text-ink-soft hover:text-brand-dark"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
